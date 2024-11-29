@@ -16,6 +16,13 @@ public class TargetSpawner : MonoBehaviour
     [Tooltip("Time interval between target spawns in seconds")]
     [SerializeField] private float spawnInterval = 3f;
 
+    [Header("Sound Effects")]
+    [Tooltip("Sound effect to play when a target spawns")]
+    [SerializeField] private AudioClip targetSpawnSound;
+
+    [Tooltip("Audio source to play spawn sound")]
+    [SerializeField] private AudioSource audioSource;
+
     /// <summary>
     /// Initialize repeated target spawning when the script starts
     /// </summary>
@@ -30,6 +37,12 @@ public class TargetSpawner : MonoBehaviour
         if (spawnPoints.Length == 0)
         {
             Debug.LogWarning("No spawn points assigned to TargetSpawner!");
+        }
+
+        // Create AudioSource if not assigned
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
         }
 
         // Start spawning targets at regular intervals
@@ -58,6 +71,12 @@ public class TargetSpawner : MonoBehaviour
             randomSpawnPoint.position, 
             randomSpawnPoint.rotation
         );
+
+         // Play spawn sound effect if configured
+        if (targetSpawnSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(targetSpawnSound);
+        }
 
         Debug.Log($"Spawned target {spawnedTarget.name} at {randomSpawnPoint.name}");
     }

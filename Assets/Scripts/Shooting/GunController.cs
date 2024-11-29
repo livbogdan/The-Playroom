@@ -130,7 +130,7 @@ public class GunController : MonoBehaviour
         // Update cooldown text
         if (cooldownText != null)
         {
-            cooldownText.text = "Cooling Down...";
+            cooldownText.text = $"Cooling Down... {currentBulletCount}";
         }
 
         yield return new WaitForSeconds(shootCooldown);
@@ -142,13 +142,24 @@ public class GunController : MonoBehaviour
         {
             cooldownText.text = "Ready to Shoot";
         }
-    }
 
+        // If bullets are full, update bullet count text
+        if (currentBulletCount == maxBullets)
+        {
+            cooldownText.text = " ";
+        }
+    }
     private void UpdateBulletCountText()
     {
         if (bulletCountText != null)
         {
             bulletCountText.text = $"Bullets: {currentBulletCount}/{maxBullets}";
+        }
+
+        // Hide cooldown text when bullets are full
+        if (cooldownText != null)
+        {
+            cooldownText.gameObject.SetActive(currentBulletCount < maxBullets);
         }
     }
 
