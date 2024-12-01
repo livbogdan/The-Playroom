@@ -27,8 +27,6 @@ public class GunController : MonoBehaviour
     [Tooltip("Text to display cooldown status")]
     [SerializeField] private TextMeshProUGUI cooldownText;
 
-    [Tooltip("Base force applied to bullets when shot")]
-    [SerializeField] private float shootForce = 20f;
 
     [Tooltip("Cooldown time between shots in seconds")]
     [SerializeField] private float shootCooldown = 0.3f;
@@ -38,7 +36,7 @@ public class GunController : MonoBehaviour
     [SerializeField] private GrabInteractable grabInteractable; 
 
     // Internal state tracking
-    private bool isGrabbed;
+    private bool isGrabbed = false;
     private bool canShoot = true;
     private int currentBulletCount;
     
@@ -109,7 +107,7 @@ public class GunController : MonoBehaviour
 
         // Create bullet at muzzle point
         GameObject bullet = Instantiate(bulletPrefab, muzzlePoint.position, muzzlePoint.rotation);
-        Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+        
         
         // Reduce bullet count
         currentBulletCount--;

@@ -108,7 +108,7 @@ Transform:
   m_GameObject: {fileID: 1589467643973291875}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0777, z: 0.3923}
+  m_LocalPosition: {x: 0, y: 0.0808, z: 0.419}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -157,13 +157,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794528023335335323}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b023183069df224080314a560e6e1ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 9dbea1f8-57a8-4e5c-af98-bd9292e7bf00
+  instanceId: 52292cf3-5f88-4871-8adb-12851cb800f9
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -251,7 +251,7 @@ MonoBehaviour:
   _data: {fileID: 0}
   _pointableElement: {fileID: 637379401275764956}
   _rigidbody: {fileID: 8014597245313602852}
-  _grabSource: {fileID: 0}
+  _grabSource: {fileID: 8338913097051499245}
   _useClosestPointAsGrabSource: 0
   _releaseDistance: 0
   _resetGrabOnGrabsUpdated: 1
@@ -271,7 +271,8 @@ MonoBehaviour:
   muzzlePoint: {fileID: 6629372581976178463}
   bulletPrefab: {fileID: 3470404114620679077, guid: 3ef062c62153715459bbed49c72c4b3c,
     type: 3}
-  bulletRb: {fileID: 8014597245313602852}
+  bulletRb: {fileID: 5938151002626959570, guid: 3ef062c62153715459bbed49c72c4b3c,
+    type: 3}
   maxBullets: 10
   bulletCountText: {fileID: 1030396925330813486}
   cooldownText: {fileID: 8409017514901994116}
@@ -515,6 +516,37 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &4377950254071868191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8338913097051499245}
+  m_Layer: 0
+  m_Name: GrabPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8338913097051499245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4377950254071868191}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0018}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1223221056642301202}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5378465721578436732
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +583,7 @@ Transform:
   - {fileID: 1834406670081457626}
   - {fileID: 6629372581976178463}
   - {fileID: 6935907321879813734}
+  - {fileID: 8338913097051499245}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1805391363319221604
@@ -566,7 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 7358e191-33b7-43ca-b066-b2f00531ac66
-  instanceId: 773a6b57-553a-4028-9b69-6fc439fb671b
+  instanceId: 615f5053-0b18-4965-a170-6e13edee84f1
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -594,7 +627,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

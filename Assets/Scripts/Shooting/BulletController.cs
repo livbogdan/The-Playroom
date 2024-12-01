@@ -13,14 +13,27 @@ public class BulletController : MonoBehaviour
     [Tooltip("Time in seconds before the bullet is automatically destroyed")]
     [SerializeField] private float lifetime = 5f;
 
+    [Tooltip("Base force applied to bullets when shot")]
+    [SerializeField] private float shootForce = 1000f;
+
     [Tooltip("Visual effect to spawn upon bullet collision")]
     [SerializeField] private GameObject hitEffect;
+
+    private Rigidbody bulletRb;
 
     /// <summary>
     /// Initialize bullet self-destruction timer
     /// </summary>
     private void Start()
     {
+        // Get the Rigidbody component
+        bulletRb = GetComponent<Rigidbody>();
+
+        // Apply force in the forward direction of the bullet
+        if (bulletRb != null)
+        {
+            bulletRb.AddForce(transform.forward * shootForce);
+        }        
         // Destroy bullet after specified lifetime to prevent infinite existence
         Destroy(gameObject, lifetime);
         Debug.Log($"Bullet spawned with {damage} damage and {lifetime}s lifetime");

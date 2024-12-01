@@ -12,9 +12,16 @@ public class TargetSpawner : MonoBehaviour
     
     [Tooltip("Possible spawn locations for targets")]
     [SerializeField] private Transform[] spawnPoints;
+
+    [Space(5)]
     
     [Tooltip("Time interval between target spawns in seconds")]
     [SerializeField] private float spawnInterval = 3f;
+
+    [Tooltip("Duration (in seconds) before spawned targets are destroyed")]
+    [SerializeField] private float targetLifetime = 5f;
+
+    [Space(5)]    
 
     [Header("Sound Effects")]
     [Tooltip("Sound effect to play when a target spawns")]
@@ -77,6 +84,9 @@ public class TargetSpawner : MonoBehaviour
         {
             audioSource.PlayOneShot(targetSpawnSound);
         }
+
+        // Destroy the target after specified time
+        Destroy(spawnedTarget, targetLifetime);
 
         Debug.Log($"Spawned target {spawnedTarget.name} at {randomSpawnPoint.name}");
     }
