@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4194972005290770424}
   - component: {fileID: 3555464804133890304}
   - component: {fileID: 7506512254263296274}
+  - component: {fileID: 200969156977234227}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -83,6 +84,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &200969156977234227
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639200900129560308}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: e42a245ddc40f744994b4b96b407ec47, type: 3}
 --- !u!1 &1589467643973291875
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 52292cf3-5f88-4871-8adb-12851cb800f9
+  instanceId: 3812e379-82f1-4e6d-8eb7-50f9e79717dd
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -276,7 +299,6 @@ MonoBehaviour:
   maxBullets: 10
   bulletCountText: {fileID: 1030396925330813486}
   cooldownText: {fileID: 8409017514901994116}
-  shootForce: 20
   shootCooldown: 0.3
   grabInteractable: {fileID: 4148674041742310769}
 --- !u!1 &2920890498351937474
@@ -599,7 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 7358e191-33b7-43ca-b066-b2f00531ac66
-  instanceId: 615f5053-0b18-4965-a170-6e13edee84f1
+  instanceId: 6a34e09f-abea-4742-8d53-f050486a2235
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
