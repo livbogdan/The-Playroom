@@ -474,7 +474,12 @@ MonoBehaviour:
   _hand: {fileID: 1825365661}
   _offset: {x: 0, y: 0, z: 0}
   _rotation: {x: 0, y: 0, z: 0, w: 1}
+  _posOffset: {x: 0, y: 0, z: 0}
+  _rotOffset: {x: 0, y: 0, z: 0, w: 1}
   _mirrorOffsetsForLeftHand: 0
+  _freezeRotationX: 0
+  _freezeRotationY: 0
+  _freezeRotationZ: 0
 --- !u!1 &48002743
 GameObject:
   m_ObjectHideFlags: 0
@@ -2736,7 +2741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc5c234723e3a54d8dd09b131117743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meshType: 0
+  _meshType: 4
 --- !u!114 &221059175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2768,7 +2773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2609c54f376cffc4da1ab9401cc1a36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skeletonType: 0
+  _skeletonType: 4
   _updateRootPose: 0
   _updateRootScale: 1
   _enablePhysicsCapsules: 0
@@ -3857,7 +3862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc5c234723e3a54d8dd09b131117743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meshType: 1
+  _meshType: 5
 --- !u!114 &284245764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3889,7 +3894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2609c54f376cffc4da1ab9401cc1a36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skeletonType: 1
+  _skeletonType: 5
   _updateRootPose: 0
   _updateRootScale: 1
   _enablePhysicsCapsules: 0
@@ -5169,6 +5174,10 @@ MonoBehaviour:
   - {fileID: 92680086}
   - {fileID: 1307922854}
   - {fileID: 1570978166}
+  _openXRSkinnedMeshRenderer: {fileID: 0}
+  _openXRRoot: {fileID: 0}
+  _openXRHandMaterialPropertyBlockEditor: {fileID: 0}
+  _openXRJointTransforms: []
 --- !u!1 &391375126
 GameObject:
   m_ObjectHideFlags: 0
@@ -6208,6 +6217,74 @@ MonoBehaviour:
   _includeChildrenAsDependents: 1
   _gameObjects: []
   _monoBehaviours: []
+--- !u!1001 &464728762
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3079821174187912749, guid: b0c390503bf954e868dae730e5dff45c,
+        type: 3}
+      propertyPath: m_Name
+      value: Tomas CansGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787210978954933988, guid: b0c390503bf954e868dae730e5dff45c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787210978954933988, guid: b0c390503bf954e868dae730e5dff45c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787210978954933988, guid: b0c390503bf954e868dae730e5dff45c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787210978954933988, guid: b0c390503bf954e868dae730e5dff45c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787210978954933988, guid: b0c390503bf954e868dae730e5dff45c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787210978954933988, guid: b0c390503bf954e868dae730e5dff45c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787210978954933988, guid: b0c390503bf954e868dae730e5dff45c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787210978954933988, guid: b0c390503bf954e868dae730e5dff45c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787210978954933988, guid: b0c390503bf954e868dae730e5dff45c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5787210978954933988, guid: b0c390503bf954e868dae730e5dff45c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b0c390503bf954e868dae730e5dff45c, type: 3}
 --- !u!1 &467757395
 GameObject:
   m_ObjectHideFlags: 0
@@ -8281,7 +8358,14 @@ MonoBehaviour:
   _handJointId: 8
   _localPositionOffset: {x: 0.017, y: 0, z: 0}
   _rotationOffset: {x: 0, y: 0, z: 0, w: 1}
+  _jointId: 0
+  _posOffset: {x: 0, y: 0, z: 0}
+  _rotOffset: {x: 0, y: 0, z: 0, w: 1}
+  _useLegacyOrientation: 0
   _mirrorOffsetsForLeftHand: 1
+  _freezeRotationX: 0
+  _freezeRotationY: 0
+  _freezeRotationZ: 0
 --- !u!1 &670173557
 GameObject:
   m_ObjectHideFlags: 0
@@ -8661,6 +8745,10 @@ MonoBehaviour:
   enableDynamicResolution: 0
   minDynamicResolutionScale: 0.7
   maxDynamicResolutionScale: 1.3
+  quest2MinDynamicResolutionScale: 0.7
+  quest2MaxDynamicResolutionScale: 1.3
+  quest3MinDynamicResolutionScale: 0.7
+  quest3MaxDynamicResolutionScale: 1.6
   minRenderScale: 0.7
   maxRenderScale: 1
   _headPoseRelativeOffsetRotation: {x: 0, y: 0, z: 0}
@@ -8719,6 +8807,7 @@ MonoBehaviour:
   SimultaneousHandsAndControllersEnabled: 0
   _readOnlyWideMotionModeHandPosesEnabled: 0
   wideMotionModeHandPosesEnabled: 0
+  dynamicResolutionVersion: 0
 --- !u!114 &686665452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10038,7 +10127,14 @@ MonoBehaviour:
   _handJointId: 8
   _localPositionOffset: {x: 0.017, y: 0, z: 0}
   _rotationOffset: {x: 0, y: 0, z: 0, w: 1}
+  _jointId: 0
+  _posOffset: {x: 0, y: 0, z: 0}
+  _rotOffset: {x: 0, y: 0, z: 0, w: 1}
+  _useLegacyOrientation: 0
   _mirrorOffsetsForLeftHand: 1
+  _freezeRotationX: 0
+  _freezeRotationY: 0
+  _freezeRotationZ: 0
 --- !u!43 &773791899
 Mesh:
   m_ObjectHideFlags: 0
@@ -11643,6 +11739,8 @@ MonoBehaviour:
   _collider: {fileID: 1458987285}
   _localPositionOffset: {x: 0, y: 0, z: 0}
   _rotationOffset: {x: 0, y: 0, z: 0, w: 1}
+  _posOffset: {x: 0, y: 0, z: 0}
+  _rotOffset: {x: 0, y: 0, z: 0, w: 1}
   _mirrorOffsetsForLeftHand: 1
 --- !u!1 &957326375
 GameObject:
@@ -16132,7 +16230,12 @@ MonoBehaviour:
   _hand: {fileID: 1714442618}
   _offset: {x: 0, y: 0, z: 0}
   _rotation: {x: 0, y: 0, z: 0, w: 1}
+  _posOffset: {x: 0, y: 0, z: 0}
+  _rotOffset: {x: 0, y: 0, z: 0, w: 1}
   _mirrorOffsetsForLeftHand: 0
+  _freezeRotationX: 0
+  _freezeRotationY: 0
+  _freezeRotationZ: 0
 --- !u!1 &1303953843
 GameObject:
   m_ObjectHideFlags: 0
@@ -16181,7 +16284,12 @@ MonoBehaviour:
   _hand: {fileID: 1714442618}
   _offset: {x: -0.1, y: -0.035, z: 0}
   _rotation: {x: 0.105225, y: -0.6678412, z: 0.013933297, w: 0.7366965}
+  _posOffset: {x: 0, y: 0, z: 0}
+  _rotOffset: {x: 0, y: 0, z: 0, w: 1}
   _mirrorOffsetsForLeftHand: 1
+  _freezeRotationX: 0
+  _freezeRotationY: 0
+  _freezeRotationZ: 0
 --- !u!1 &1307922853
 GameObject:
   m_ObjectHideFlags: 0
@@ -16507,6 +16615,8 @@ MonoBehaviour:
   _collider: {fileID: 1890654494}
   _localPositionOffset: {x: 0, y: 0, z: 0}
   _rotationOffset: {x: 0, y: 0, z: 0, w: 1}
+  _posOffset: {x: 0, y: 0, z: 0}
+  _rotOffset: {x: 0, y: 0, z: 0, w: 1}
   _mirrorOffsetsForLeftHand: 1
 --- !u!1 &1337330644
 GameObject:
@@ -16918,6 +17028,74 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!1001 &1381791348
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1223221056642301202, guid: 2e3f59d4084f79e4db98f5d4c5b2a9a1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.4020796
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223221056642301202, guid: 2e3f59d4084f79e4db98f5d4c5b2a9a1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.018209934
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223221056642301202, guid: 2e3f59d4084f79e4db98f5d4c5b2a9a1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.259576
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223221056642301202, guid: 2e3f59d4084f79e4db98f5d4c5b2a9a1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223221056642301202, guid: 2e3f59d4084f79e4db98f5d4c5b2a9a1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223221056642301202, guid: 2e3f59d4084f79e4db98f5d4c5b2a9a1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223221056642301202, guid: 2e3f59d4084f79e4db98f5d4c5b2a9a1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223221056642301202, guid: 2e3f59d4084f79e4db98f5d4c5b2a9a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223221056642301202, guid: 2e3f59d4084f79e4db98f5d4c5b2a9a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223221056642301202, guid: 2e3f59d4084f79e4db98f5d4c5b2a9a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5378465721578436732, guid: 2e3f59d4084f79e4db98f5d4c5b2a9a1,
+        type: 3}
+      propertyPath: m_Name
+      value: Gun
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2e3f59d4084f79e4db98f5d4c5b2a9a1, type: 3}
 --- !u!1 &1388808744
 GameObject:
   m_ObjectHideFlags: 0
@@ -17690,6 +17868,10 @@ MonoBehaviour:
   - {fileID: 600790174}
   - {fileID: 1084859548}
   - {fileID: 1570585464}
+  _openXRSkinnedMeshRenderer: {fileID: 0}
+  _openXRRoot: {fileID: 0}
+  _openXRHandMaterialPropertyBlockEditor: {fileID: 0}
+  _openXRJointTransforms: []
 --- !u!1 &1429024674
 GameObject:
   m_ObjectHideFlags: 0
@@ -18325,7 +18507,12 @@ MonoBehaviour:
   _hand: {fileID: 1714442618}
   _offset: {x: -0.11, y: -0.075, z: -0.02}
   _rotation: {x: 0.105225, y: -0.6678412, z: 0.013933297, w: 0.7366965}
+  _posOffset: {x: 0, y: 0, z: 0}
+  _rotOffset: {x: 0, y: 0, z: 0, w: 1}
   _mirrorOffsetsForLeftHand: 1
+  _freezeRotationX: 0
+  _freezeRotationY: 0
+  _freezeRotationZ: 0
 --- !u!4 &1458987288
 Transform:
   m_ObjectHideFlags: 0
@@ -23412,7 +23599,12 @@ MonoBehaviour:
   _hand: {fileID: 1825365661}
   _offset: {x: -0.1, y: -0.035, z: 0}
   _rotation: {x: 0.105225, y: -0.6678412, z: 0.013933297, w: 0.7366965}
+  _posOffset: {x: 0, y: 0, z: 0}
+  _rotOffset: {x: 0, y: 0, z: 0, w: 1}
   _mirrorOffsetsForLeftHand: 1
+  _freezeRotationX: 0
+  _freezeRotationY: 0
+  _freezeRotationZ: 0
 --- !u!1 &1861878800
 GameObject:
   m_ObjectHideFlags: 0
@@ -23936,7 +24128,12 @@ MonoBehaviour:
   _hand: {fileID: 1825365661}
   _offset: {x: -0.11, y: -0.075, z: -0.02}
   _rotation: {x: 0.105225, y: -0.6678412, z: 0.013933297, w: 0.7366965}
+  _posOffset: {x: 0, y: 0, z: 0}
+  _rotOffset: {x: 0, y: 0, z: 0, w: 1}
   _mirrorOffsetsForLeftHand: 1
+  _freezeRotationX: 0
+  _freezeRotationY: 0
+  _freezeRotationZ: 0
 --- !u!4 &1890654497
 Transform:
   m_ObjectHideFlags: 0
@@ -27224,3 +27421,5 @@ SceneRoots:
   - {fileID: 1022009974}
   - {fileID: 1932202899}
   - {fileID: 733153579}
+  - {fileID: 464728762}
+  - {fileID: 1381791348}
