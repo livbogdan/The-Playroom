@@ -15,6 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Maria.unity
     guid: dc76a0ba163a0f7468c1fa8f410dfce8
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 96b95c0949f094ec7ae68eb25a6255f4,
+      type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e42e06fca25f3204899dea20de1e1b75,
       type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: d8a12c85e0a7b2a4189b584b62145e9d,
