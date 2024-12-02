@@ -10,7 +10,7 @@ public class RingColorChange : MonoBehaviour
     private Renderer ringRenderer;
 
     // Color to change to when the ball passes through
-    public Color newColor = Color.red;
+    public Color newColor = Color.blue;
 
     // Start is called before the first frame update
     void Start()
