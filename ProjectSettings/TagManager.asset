@@ -12,6 +12,8 @@ TagManager:
   - SkeeBall
   - Hoops
   - Sandball
+  - Ammo
+  - Bullet
   layers:
   - Default
   - TransparentFX

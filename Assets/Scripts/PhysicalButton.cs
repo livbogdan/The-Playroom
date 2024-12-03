@@ -20,10 +20,26 @@ public class PhysicalButton : MonoBehaviour
     [Tooltip("Event triggered when the button resets to its original position")]
     [SerializeField] private UnityEvent onButtonReset;
 
+    [Header("Objects")]
+    [Tooltip("Objects to be activated when the button is pressed")]
+    [SerializeField] private GameObject[] activatedObject;
+    [SerializeField] private GameObject[] deactivatedObject;
+
+    [Header("Prefab Spawning")]
+    [Tooltip("Prefab to spawn when button is pressed")]
+    [SerializeField] private GameObject[] prefabToSpawn;
+
+    [Tooltip("Transform point where the prefab will be spawned")]
+    [SerializeField] private Transform[] spawnPoint;
+
     // Internal tracking variables
     private Vector3 originalPosition;
     private Rigidbody buttonRigidbody;
     private bool isPressed = false;
+
+    [Header("Button Tag")]
+    [Tooltip("Tag for the button")]
+    [SerializeField] private string tag;
 
     /// <summary>
     /// Initialize button components and store original position
@@ -43,10 +59,15 @@ public class PhysicalButton : MonoBehaviour
     /// <param name="collision">Collision information</param>
     private void OnCollisionEnter(Collision collision)
     {
-        // Prevent multiple presses
-        if (!isPressed)
+        if (collision.gameObject.CompareTag(tag)) 
         {
-            PressButton();
+            // Prevent multiple presses
+            if (!isPressed)
+            {
+                PressButton();
+                activatedObject[0].SetActive(true);
+                deactivatedObject[0].SetActive(false);
+            }
         }
     }
 
@@ -69,6 +90,9 @@ public class PhysicalButton : MonoBehaviour
 
         // Schedule automatic reset
         Invoke(nameof(ResetButton), 1f);
+
+        // Spawn a prefab if configured
+        SpawnPrefab();
     }
 
     /// <summary>
@@ -84,5 +108,18 @@ public class PhysicalButton : MonoBehaviour
 
         // Trigger reset event
         onButtonReset?.Invoke();
+    }
+
+    /// <summary>
+    /// Spawns a prefab at the specified spawn point
+    /// </summary>
+    private void SpawnPrefab()
+    {
+        // Check if a prefab is assigned
+        if (prefabToSpawn != null && spawnPoint != null)
+        {
+            // Instantiate the prefab at the spawn point's position and rotation
+            Instantiate(prefabToSpawn[0], spawnPoint[0].position, spawnPoint[0].rotation);
+        }
     }
 }
