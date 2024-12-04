@@ -1,7 +1,7 @@
 using UnityEngine;
 using Oculus.Interaction;
 using System.Collections;
-using TMPro; // Add TextMeshPro namespace
+using TMPro;
 
 /// <summary>
 /// Manages gun mechanics including shooting, grabbing, and input handling for VR interactions
@@ -14,12 +14,13 @@ public class GunController : MonoBehaviour
 
     [Tooltip("Prefab of the bullet to be instantiated when shooting")]
     [SerializeField] private GameObject bulletPrefab;
-
-    [SerializeField] private Rigidbody bulletRb;
     
     [Header("Bullet Limits")]
     [Tooltip("Maximum number of bullets that can be fired")]
     [SerializeField] private int maxBullets = 10;
+
+    [Tooltip("Enable infinite bullets")]
+    [SerializeField] private bool infiniteBullets = false;
     
     [Tooltip("Text to display current bullet count")]
     [SerializeField] private TextMeshProUGUI bulletCountText;
@@ -34,6 +35,10 @@ public class GunController : MonoBehaviour
     [Header("Interaction References")]
     [Tooltip("Grab interaction component for the gun")]
     [SerializeField] private GrabInteractable grabInteractable; 
+
+    private OVRHand leftHand;
+    private OVRHand rightHand;
+
 
     // Internal state tracking
     private bool isGrabbed = false;
@@ -57,6 +62,9 @@ public class GunController : MonoBehaviour
         
         // Subscribe to grab events
         grabInteractable.WhenPointerEventRaised += HandleGrabEvents;
+
+        // Hide controllers when gun is grabbed
+        FindHandReferences();
     }
 
     /// <summary>
@@ -69,9 +77,11 @@ public class GunController : MonoBehaviour
         {
             case PointerEventType.Select:
                 isGrabbed = true; // Gun is grabbed
+                HideControllers();
                 break;
             case PointerEventType.Unselect:
                 isGrabbed = false; // Gun is released
+                ShowControllers();
                 break;
         }
     }
@@ -102,19 +112,22 @@ public class GunController : MonoBehaviour
     /// </summary>
     private void Shoot()
     {
-        // Check if can shoot and bullets remain
-        if (!canShoot || currentBulletCount <= 0) return;
+        // Check if can shoot
+        if (!canShoot) return;
 
         // Create bullet at muzzle point
         GameObject bullet = Instantiate(bulletPrefab, muzzlePoint.position, muzzlePoint.rotation);
         
-        
-        // Reduce bullet count
-        currentBulletCount--;
-        UpdateBulletCountText();
+        // Only reduce bullet count if not in infinite mode
+        if (!infiniteBullets)
+        {
+            currentBulletCount--;
+            UpdateBulletCountText();
+        }
         
         // Start shooting cooldown
         StartCoroutine(ShootCooldown());
+
     }
 
     /// <summary>
@@ -147,24 +160,113 @@ public class GunController : MonoBehaviour
             cooldownText.text = " ";
         }
     }
+    
+    /// <summary>
+    /// Updates the bullet count text display
+    /// </summary> 
     private void UpdateBulletCountText()
     {
         if (bulletCountText != null)
         {
-            bulletCountText.text = $"Bullets: {currentBulletCount}/{maxBullets}";
-        }
-
-        // Hide cooldown text when bullets are full
-        if (cooldownText != null)
-        {
-            cooldownText.gameObject.SetActive(currentBulletCount < maxBullets);
+            if (infiniteBullets)
+            {
+                bulletCountText.text = "Bullets: ∞";
+            }
+            else
+            {
+                bulletCountText.text = $"Bullets: {currentBulletCount}/{maxBullets}";
+            }
         }
     }
 
-    // Optional: Method to reload bullets
-    public void Reload()
+    /// <summary>
+    /// Reloads the gun to full capacity
+    /// </summary>
+    private void Reload()
     {
         currentBulletCount = maxBullets;
         UpdateBulletCountText();
+    }
+
+    /// <summary>
+    /// Find and store references to the left and right hand components
+    /// </summary>
+    #region Hide/Show Controllers
+
+    /// <summary>
+    /// Hides the controllers when the gun is grabbed
+    /// </summary>
+    private void HideControllers()
+    {
+        if (leftHand != null)
+            leftHand.gameObject.SetActive(false);
+        
+        if (rightHand != null)
+            rightHand.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// Shows the controllers when the gun is released
+    /// </summary>
+    private void ShowControllers()
+    {
+        if (leftHand != null)
+            leftHand.gameObject.SetActive(true);
+        
+        if (rightHand != null)
+            rightHand.gameObject.SetActive(true);
+    }
+
+    /// <summary>
+    /// Find and store references to the left and right hand components
+    /// </summary>
+    private void FindHandReferences()
+    {
+    // Find OVRHand components in the scene
+    OVRHand[] hands = FindObjectsOfType<OVRHand>();
+    
+    foreach (OVRHand hand in hands)
+    {
+        // Check by name or transform hierarchy
+        if (hand.gameObject.name.ToLower().Contains("left"))
+        {
+            leftHand = hand;
+        }
+        else if (hand.gameObject.name.ToLower().Contains("right"))
+        {
+            rightHand = hand;
+        }
+    }
+
+    // Alternative method if name-based detection fails
+    if (leftHand == null || rightHand == null)
+    {
+        // Assuming hands are direct children of a specific parent
+        Transform handParent = transform.root.Find("OVRCameraRig/TrackingSpace");
+        if (handParent != null)
+        {
+            leftHand = handParent.Find("LeftHandAnchor")?.GetComponent<OVRHand>();
+            rightHand = handParent.Find("RightHandAnchor")?.GetComponent<OVRHand>();
+        }
+    }
+
+    // Log warning if hands are still not found
+    if (leftHand == null || rightHand == null)
+    {
+        Debug.LogWarning("Could not find both left and right hands in the scene.");
+    }
+    }
+    
+    #endregion
+
+
+    void OnTriggerEnter(Collider other)
+    {   
+        // Check if the collided object is an ammo pickup
+        if (other.gameObject.CompareTag("Ammo"))
+        {
+            Reload();
+            //Destroy(other.gameObject);
+        }
     }
 }
