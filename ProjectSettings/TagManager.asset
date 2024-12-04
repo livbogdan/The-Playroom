@@ -12,11 +12,13 @@ TagManager:
   - SkeeBall
   - Hoops
   - Sandball
+  - TrackingObject
+  - Actors
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - GridCell
