@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.0081, z: -0.0272}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1223221056642301202}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 1834406670081457626}
   - component: {fileID: 1478904953499406622}
   - component: {fileID: 637379401275764956}
-  - component: {fileID: 7283199119905607583}
+  - component: {fileID: 8252297991393723109}
   - component: {fileID: 4148674041742310769}
   - component: {fileID: 1115158922568955110}
   m_Layer: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: 66720495-0f2f-402f-915e-0cbd14cd98d8
+  instanceId: db4d600b-f944-4077-af5b-6917c347d8c6
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8
@@ -192,7 +192,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 8014597245313602852}
   _kinematicWhileSelected: 1
   _throwWhenUnselected: 1
---- !u!114 &7283199119905607583
+--- !u!114 &8252297991393723109
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,25 +213,25 @@ MonoBehaviour:
   _physicsGrabbable: {fileID: 0}
   _resetGrabOnGrabsUpdated: 1
   _scoringModifier:
-    _positionRotationWeight: 0.5
+    _positionRotationWeight: 0.8
   _slippiness: 0
   _supportedGrabTypes: 3
   _pinchGrabRules:
-    _thumbRequirement: 0
+    _thumbRequirement: 1
     _indexRequirement: 1
     _middleRequirement: 1
     _ringRequirement: 0
     _pinkyRequirement: 0
-    _unselectMode: 1
+    _unselectMode: 0
   _palmGrabRules:
     _thumbRequirement: 1
-    _indexRequirement: 0
+    _indexRequirement: 2
     _middleRequirement: 2
     _ringRequirement: 2
     _pinkyRequirement: 1
     _unselectMode: 0
   _movementProvider: {fileID: 0}
-  _handAligment: 0
+  _handAligment: 1
   _handGrabPoses: []
 --- !u!114 &4148674041742310769
 MonoBehaviour:
@@ -272,10 +272,12 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3470404114620679077, guid: 3ef062c62153715459bbed49c72c4b3c,
     type: 3}
   maxBullets: 10
+  infiniteBullets: 0
   bulletCountText: {fileID: 1030396925330813486}
   cooldownText: {fileID: 8409017514901994116}
   shootCooldown: 0.5
   grabInteractable: {fileID: 4148674041742310769}
+  shootingAudioSource: {fileID: 8300000, guid: 8b294592d3778fa4ba055b873c62a85c, type: 3}
 --- !u!1 &2920890498351937474
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,7 +540,7 @@ Transform:
   m_GameObject: {fileID: 4377950254071868191}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0071, z: -0.0256}
+  m_LocalPosition: {x: 0, y: -0.0002, z: -0.0336}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -596,7 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 7358e191-33b7-43ca-b066-b2f00531ac66
-  instanceId: 70e0f9f8-43d1-480b-ab40-3da4248bb515
+  instanceId: 9632f796-3aca-41fc-8c76-2d61f2c3869f
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -647,8 +649,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.055391766, y: 0.316244, z: 0.56201935}
-  m_Center: {x: 0.00023110583, y: 0.05982766, z: 0.14029455}
+  m_Size: {x: 0.031621456, y: 0.1614321, z: 0.28478658}
+  m_Center: {x: -0.00007367134, y: 0.025696397, z: 0.058642596}
 --- !u!1 &8608841893405053444
 GameObject:
   m_ObjectHideFlags: 0

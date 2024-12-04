@@ -73,3 +73,5 @@ crashlytics-build.properties
 
 *.vscode\
 mono_crash.0.0.json
+ProjectSettings/ProjectSettings.asset
+ProjectSettings/EditorBuildSettings.asset

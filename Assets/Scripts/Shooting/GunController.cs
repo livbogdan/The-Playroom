@@ -36,6 +36,10 @@ public class GunController : MonoBehaviour
     [Tooltip("Grab interaction component for the gun")]
     [SerializeField] private GrabInteractable grabInteractable; 
 
+    [Header("Audio")]
+    [Tooltip("Audio source for shooting sound")]
+    [SerializeField] private AudioClip shootingAudioSource;
+
     private OVRHand leftHand;
     private OVRHand rightHand;
 
@@ -113,7 +117,15 @@ public class GunController : MonoBehaviour
     private void Shoot()
     {
         // Check if can shoot
-        if (!canShoot) return;
+        // Check if can shoot and has bullets
+        if (!canShoot || currentBulletCount <= 0) 
+        {
+            if (currentBulletCount <= 0 && cooldownText != null)
+            {
+                cooldownText.text = "Need to reload!";
+            }
+            return;
+        }
 
         // Create bullet at muzzle point
         GameObject bullet = Instantiate(bulletPrefab, muzzlePoint.position, muzzlePoint.rotation);
@@ -127,6 +139,9 @@ public class GunController : MonoBehaviour
         
         // Start shooting cooldown
         StartCoroutine(ShootCooldown());
+
+        // Add sound effect when shooting
+        AudioSource.PlayClipAtPoint(shootingAudioSource, muzzlePoint.position);
 
     }
 
@@ -174,6 +189,8 @@ public class GunController : MonoBehaviour
             }
             else
             {
+                // Ensure bullet count doesn't go below 0
+                currentBulletCount = Mathf.Max(0, currentBulletCount);
                 bulletCountText.text = $"Bullets: {currentBulletCount}/{maxBullets}";
             }
         }

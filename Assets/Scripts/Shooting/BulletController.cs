@@ -67,7 +67,7 @@ public class BulletController : MonoBehaviour
             Debug.Log($"Bullet hit non-damageable object: {collision.gameObject.name}");
         }
 
-        // Destroy bullet on impact
+        // Destroy bullet on impact and hiteffeect
         Destroy(gameObject);
     }
 

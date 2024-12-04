@@ -13,7 +13,14 @@ TagManager:
   - Hoops
   - Sandball
   - TrackingObject
+  - Bullet
   - Actors
+  - LocoButton
+  - Locomotion
+  - PassThroughButton
+  - PassThrough
+  - LocoText
+  - Ammo
   layers:
   - Default
   - TransparentFX
