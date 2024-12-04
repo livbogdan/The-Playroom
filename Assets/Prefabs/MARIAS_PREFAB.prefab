@@ -2787,21 +2787,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SandBallPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 4764489506054115123, guid: 70a7c7828a862f942b675c44fed6ad89,
-        type: 3}
-      propertyPath: instanceId
-      value: b5130b6a-939e-4164-b2f8-87c973284aba
-      objectReference: {fileID: 0}
-    - target: {fileID: 5080597210027063510, guid: 70a7c7828a862f942b675c44fed6ad89,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.30000007
-      objectReference: {fileID: 0}
-    - target: {fileID: 5080597210027063510, guid: 70a7c7828a862f942b675c44fed6ad89,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.30000007
-      objectReference: {fileID: 0}
     - target: {fileID: 5080597210027063510, guid: 70a7c7828a862f942b675c44fed6ad89,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2875,26 +2860,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SandBallPrefab (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3823823253260427523, guid: 70a7c7828a862f942b675c44fed6ad89,
-        type: 3}
-      propertyPath: instanceId
-      value: 1ca86248-79ef-4443-89cf-849df0a4390f
-      objectReference: {fileID: 0}
-    - target: {fileID: 4764489506054115123, guid: 70a7c7828a862f942b675c44fed6ad89,
-        type: 3}
-      propertyPath: instanceId
-      value: 005ba3a4-f6a4-4be5-b4bd-f91fcdcb4eef
-      objectReference: {fileID: 0}
-    - target: {fileID: 5080597210027063510, guid: 70a7c7828a862f942b675c44fed6ad89,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.30000007
-      objectReference: {fileID: 0}
-    - target: {fileID: 5080597210027063510, guid: 70a7c7828a862f942b675c44fed6ad89,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.30000007
       objectReference: {fileID: 0}
     - target: {fileID: 5080597210027063510, guid: 70a7c7828a862f942b675c44fed6ad89,
         type: 3}
