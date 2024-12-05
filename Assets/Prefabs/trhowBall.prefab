@@ -112,7 +112,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8160829895828895579}
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: 7358e191-33b7-43ca-b066-b2f00531ac66
-  instanceId: df72c44f-570f-42b1-9f2e-0a017093d538
+  instanceId: ba0f9820-dd21-4cf8-a249-39bd233e4f78
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -160,9 +160,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!135 &7309804472680183553
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: f8766c17-aaf8-4b55-9431-de8deea83842
-  instanceId: e2aec2e4-1796-4160-a032-047059ee6dbb
+  instanceId: 17fcb699-fca6-4c62-8e39-d3d50d10e3c5
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: f8338144-8280-4ff6-9455-ae2bb9c20fe8

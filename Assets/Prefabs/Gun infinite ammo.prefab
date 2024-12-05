@@ -63,11 +63,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1478904953499406622, guid: 2e3f59d4084f79e4db98f5d4c5b2a9a1,
+        type: 3}
+      propertyPath: instanceId
+      value: 2b7c0170-fdd1-4f24-8b95-48ec96ef927e
+      objectReference: {fileID: 0}
+    - target: {fileID: 1805391363319221604, guid: 2e3f59d4084f79e4db98f5d4c5b2a9a1,
+        type: 3}
+      propertyPath: instanceId
+      value: 082798d8-1830-4d37-93c7-974d11c23b69
+      objectReference: {fileID: 0}
     - target: {fileID: 5378465721578436732, guid: 2e3f59d4084f79e4db98f5d4c5b2a9a1,
         type: 3}
       propertyPath: m_Name
-      value: Gun Variant
+      value: Gun infinite ammo
       objectReference: {fileID: 0}
+    - target: {fileID: 7506512254263296274, guid: 2e3f59d4084f79e4db98f5d4c5b2a9a1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 40b5b1cfe73d4444eb7e750bd8e3f90a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

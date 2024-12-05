@@ -75,3 +75,4 @@ crashlytics-build.properties
 mono_crash.0.0.json
 ProjectSettings/ProjectSettings.asset
 ProjectSettings/EditorBuildSettings.asset
+/The Playroom_BurstDebugInformation_DoNotShip

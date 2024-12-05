@@ -13,33 +13,38 @@ public class PhysicalButton : MonoBehaviour
     [Tooltip("Force applied when the button is pressed")]
     [SerializeField] private float pressForce = 10f;
 
-    [Header("Button Events")]
+    [Header("Collision Interaction")]
+    [Tooltip("Layers that can trigger interactions")]
+    [SerializeField] private LayerMask interactableLayers;
+
+    [Header("Object Interactions")]
+    [Tooltip("Objects to activate on collision")]
+    [SerializeField] private GameObject[] objectsToActivate;
+
+    [Tooltip("Objects to deactivate on collision")]
+    [SerializeField] private GameObject[] objectsToDeactivate;
+
+    [Header("Spawning")]
+    [Tooltip("Prefabs to spawn on collision")]
+    [SerializeField] private GameObject[] prefabsToSpawn;
+
+    [Tooltip("Spawn points for prefabs")]
+    [SerializeField] private Transform[] spawnPoints;
+
+    [Header("Events")]
+    [Tooltip("Event triggered on collision")]
+    [SerializeField] private UnityEvent onCollisionEvent;
+
     [Tooltip("Event triggered when the button is pressed")]
     [SerializeField] private UnityEvent onButtonPressed;
 
     [Tooltip("Event triggered when the button resets to its original position")]
     [SerializeField] private UnityEvent onButtonReset;
 
-    [Header("Objects")]
-    [Tooltip("Objects to be activated when the button is pressed")]
-    [SerializeField] private GameObject[] activatedObject;
-    [SerializeField] private GameObject[] deactivatedObject;
-
-    [Header("Prefab Spawning")]
-    [Tooltip("Prefab to spawn when button is pressed")]
-    [SerializeField] private GameObject[] prefabToSpawn;
-
-    [Tooltip("Transform point where the prefab will be spawned")]
-    [SerializeField] private Transform[] spawnPoint;
-
     // Internal tracking variables
     private Vector3 originalPosition;
     private Rigidbody buttonRigidbody;
     private bool isPressed = false;
-
-    [Header("Button Tag")]
-    [Tooltip("Tag for the button")]
-    [SerializeField] private string tag;
 
     /// <summary>
     /// Initialize button components and store original position
@@ -59,16 +64,43 @@ public class PhysicalButton : MonoBehaviour
     /// <param name="collision">Collision information</param>
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag(tag)) 
+        // Check if the colliding object is on an interactable layer
+        if (IsValidInteraction(collision.gameObject))
         {
             // Prevent multiple presses
             if (!isPressed)
             {
                 PressButton();
-                activatedObject[0].SetActive(true);
-                deactivatedObject[0].SetActive(false);
+                HandleCollision();
             }
         }
+    }
+
+    private bool IsValidInteraction(GameObject collidedObject)
+    {
+        // Check if the collided object is on the specified interactable layers
+        return (1 << collidedObject.layer & interactableLayers) != 0;
+    }
+
+    private void HandleCollision()
+    {
+        // Activate specified objects
+        foreach (var obj in objectsToActivate)
+        {
+            if (obj != null) obj.SetActive(true);
+        }
+
+        // Deactivate specified objects
+        foreach (var obj in objectsToDeactivate)
+        {
+            if (obj != null) obj.SetActive(false);
+        }
+
+        // Spawn prefabs
+        SpawnPrefabs();
+
+        // Trigger collision event
+        onCollisionEvent?.Invoke();
     }
 
     /// <summary>
@@ -90,9 +122,6 @@ public class PhysicalButton : MonoBehaviour
 
         // Schedule automatic reset
         Invoke(nameof(ResetButton), 1f);
-
-        // Spawn a prefab if configured
-        SpawnPrefab();
     }
 
     /// <summary>
@@ -110,16 +139,15 @@ public class PhysicalButton : MonoBehaviour
         onButtonReset?.Invoke();
     }
 
-    /// <summary>
-    /// Spawns a prefab at the specified spawn point
-    /// </summary>
-    private void SpawnPrefab()
+    private void SpawnPrefabs()
     {
-        // Check if a prefab is assigned
-        if (prefabToSpawn != null && spawnPoint != null)
+        // Spawn prefabs at corresponding spawn points
+        for (int i = 0; i < prefabsToSpawn.Length && i < spawnPoints.Length; i++)
         {
-            // Instantiate the prefab at the spawn point's position and rotation
-            Instantiate(prefabToSpawn[0], spawnPoint[0].position, spawnPoint[0].rotation);
+            if (prefabsToSpawn[i] != null && spawnPoints[i] != null)
+            {
+                Instantiate(prefabsToSpawn[i], spawnPoints[i].position, spawnPoints[i].rotation);
+            }
         }
     }
 }

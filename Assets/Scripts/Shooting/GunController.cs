@@ -39,6 +39,14 @@ public class GunController : MonoBehaviour
     [Header("Audio")]
     [Tooltip("Audio source for shooting sound")]
     [SerializeField] private AudioClip shootingAudioSource;
+    [Tooltip("Audio clip for reloading weapon")]
+    [SerializeField] private AudioClip reloadAudioClip;
+
+    [Header("Reload Settings")]
+    [Tooltip("Time required to reload the weapon")]
+    [SerializeField] private float reloadTime = 1.5f;
+
+private bool isReloading = false;
 
     private OVRHand leftHand;
     private OVRHand rightHand;
@@ -98,6 +106,12 @@ public class GunController : MonoBehaviour
         if (isGrabbed && InputIsPressed())
         {
             Shoot();
+        }
+
+        // New reload input - use B button on Oculus Touch controllers
+        if (OVRInput.GetDown(OVRInput.Button.Two) || OVRInput.GetDown(OVRInput.Button.Four)) // B button
+        {
+            Reload();
         }
     }
 
@@ -201,8 +215,11 @@ public class GunController : MonoBehaviour
     /// </summary>
     private void Reload()
     {
-        currentBulletCount = maxBullets;
-        UpdateBulletCountText();
+        // Prevent reloading if already reloading or has full ammo
+        if (isReloading || currentBulletCount == maxBullets)
+            return;
+
+        StartCoroutine(ReloadCoroutine());
     }
 
     /// <summary>
@@ -276,14 +293,49 @@ public class GunController : MonoBehaviour
     
     #endregion
 
+    #region Reloading
+    private IEnumerator ReloadCoroutine()
+    {
+        isReloading = true;
+        canShoot = false;
 
-    void OnTriggerEnter(Collider other)
-    {   
-        // Check if the collided object is an ammo pickup
-        if (other.gameObject.CompareTag("Ammo"))
+        // Play reload sound
+        // AudioSource.PlayClipAtPoint(reloadAudioClip, transform.position);
+
+        // Update UI to show reloading
+        if (cooldownText != null)
         {
-            Reload();
-            //Destroy(other.gameObject);
+            cooldownText.text = "Reloading...";
+        }
+
+        // Reload animation or delay
+        yield return new WaitForSeconds(reloadTime);
+
+        // Reset bullet count
+        currentBulletCount = maxBullets;
+        UpdateBulletCountText();
+
+        // Reset shooting ability
+        canShoot = true;
+        isReloading = false;
+
+        // Clear reload text
+        if (cooldownText != null)
+        {
+            cooldownText.text = "Reloaded!";
+            
+            // Optional: Clear text after a short delay
+            StartCoroutine(ClearReloadText());
         }
     }
+
+    private IEnumerator ClearReloadText()
+    {
+        yield return new WaitForSeconds(1f);
+        if (cooldownText != null)
+        {
+            cooldownText.text = "";
+        }
+    }
+    #endregion
 }
