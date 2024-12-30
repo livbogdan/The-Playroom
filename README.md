@@ -12,8 +12,7 @@ Role-based development, with each student responsible for their specific gamepla
 **Bogdan Livanov:**
 Developed the shooting range, implementing precision aiming and scoring mechanics, projetmanagement and source control.
 
-> [!NOTE]
-> Useful information I did try to use SOLID principles for the project as well setup source control and project management LTS for the project.
+> I did try to use SOLID principles for the project as well setup source control and project management LFS for the project.
 
 **Tomas Joanson:**
 Created the can-smashing game, implementing physics-based interactions and user feedback, as well as give ideas for the project.
@@ -36,3 +35,6 @@ The project successfully balances technical innovation with achievable scope, ma
 
 # Project Managment
 ![image](https://github.com/user-attachments/assets/459ab239-fd93-4cd2-86d1-4b7ff36f4880)
+
+# Gameplay
+https://youtu.be/gFAlgUwhKoQ
