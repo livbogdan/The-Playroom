@@ -51,9 +51,12 @@ public class TargetSpawner : MonoBehaviour
     [Header("Timer Visualization")]
     [SerializeField] private TextMeshProUGUI timerText; // Reference to UI Text component
     [SerializeField] private Image timerFillImage; // Optional: fill image for timer bar
+
+    [Tooltip("Spawn chance (0-100) for each target prefab")]
+    [SerializeField] private float[] targetSpawnChances;
     private List<GameObject> spawnedTargets = new List<GameObject>();
     private List<GameObject> spawnedGuns = new List<GameObject>();
-    [SerializeField]private bool isGameRunning = false;
+    private bool isGameRunning = false;
     private float gameTimer = 0f;
 
     /// <summary>
@@ -154,7 +157,7 @@ public class TargetSpawner : MonoBehaviour
     /// <summary>
     /// Spawns a random target at a random spawn point
     /// </summary>
-    void SpawnTarget()
+    private void SpawnTarget()
     {
         // Check game state and spawning conditions
         if (!isGameRunning || targetPrefabs.Length == 0 || spawnPoints.Length == 0)
@@ -162,13 +165,31 @@ public class TargetSpawner : MonoBehaviour
             return;
         }
 
-        // Select random target and spawn point
-        GameObject randomTarget = targetPrefabs[Random.Range(0, targetPrefabs.Length)];
+        // Roll for spawn chance
+        float roll = Random.Range(0f, 100f);
+        GameObject selectedTarget = null;
+        
+        // Select target based on spawn chances
+        float currentThreshold = 0f;
+        for (int i = 0; i < targetPrefabs.Length; i++)
+        {
+            currentThreshold += targetSpawnChances[i];
+            if (roll <= currentThreshold)
+            {
+                selectedTarget = targetPrefabs[i];
+                break;
+            }
+        }
+        
+        // If no target was selected, return
+        if (selectedTarget == null) return;
+
+        // Select random spawn point
         Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
         // Instantiate the target
         GameObject spawnedTarget = Instantiate(
-            randomTarget, 
+            selectedTarget, 
             randomSpawnPoint.position, 
             randomSpawnPoint.rotation
         );
@@ -185,6 +206,7 @@ public class TargetSpawner : MonoBehaviour
 
         Debug.Log($"Spawned target {spawnedTarget.name} at {randomSpawnPoint.name}");
     }
+
 
     /// <summary>
     /// Spawns guns at predefined spawn points
@@ -217,6 +239,7 @@ public class TargetSpawner : MonoBehaviour
     }
     
     
+
     #region Timer Management
     /// <summary>
     /// Updates the timer display with current game time
